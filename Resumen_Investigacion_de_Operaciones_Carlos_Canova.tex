@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{setspace}
+\geometry{letterpaper,margin=2.5cm}
+\setstretch{1.15}
+\begin{document}
+\begin{titlepage}
+\centering
+{\large\bfseries UNIVERSIDAD AUTÓNOMA DEL ESTADO DE MÉXICO\par}
+\vspace{2cm}
+{\LARGE\bfseries Investigación de Operaciones\par}
+\vspace{0.7cm}
+{\Large Resumen de apuntes\par}
+\vfill
+{\large Alumno: Carlos Canova\par}
+\vspace{0.3cm}
+{\large Profesor: Julio César Galindo López\par}
+\vspace{0.3cm}
+{\large Fecha: 30 de septiembre de 2026\par}
+\vfill
+\end{titlepage}
+\section*{Introducción}
+La investigación de operaciones ayuda a tomar mejores decisiones cuando existen recursos limitados, como tiempo, dinero, materiales, personal o espacio. La idea principal es representar una situación real mediante un modelo matemático, resolverlo y después interpretar el resultado para aplicarlo al problema original.
+
+\section*{1. Del problema a un modelo}
+Antes de realizar cálculos se debe identificar qué decisión se quiere tomar. Después se definen las variables de decisión, se establece una función objetivo y se plantean las restricciones.
+
+El procedimiento general consiste en identificar la decisión y sus unidades, definir las variables, establecer si se busca maximizar un beneficio o minimizar un costo, plantear las restricciones, agregar las condiciones de no negatividad y finalmente revisar que las unidades y los resultados tengan sentido.
+
+En programación lineal las variables aparecen elevadas a la primera potencia y no se multiplican entre sí.
+
+\section*{2. Matrices para organizar información}
+Las matrices permiten organizar de manera compacta los coeficientes, las variables y los términos independientes de un problema.
+
+Una matriz de tamaño m x n tiene m filas y n columnas. Para sumar o restar matrices deben tener las mismas dimensiones. Para multiplicar dos matrices, el número de columnas de la primera debe coincidir con el número de filas de la segunda.
+
+Un sistema de ecuaciones puede escribirse de forma resumida como AX = B, donde A es la matriz de coeficientes, X contiene las incógnitas y B los términos independientes. También se puede utilizar la matriz aumentada y la eliminación de Gauss para resolver sistemas.
+
+\section*{3. Preparación de un modelo para Simplex}
+El método simplex trabaja con igualdades, por lo que es necesario transformar las restricciones. Si una restricción es menor o igual, se agrega una variable de holgura. Si es mayor o igual, se resta una variable de exceso. En ciertos problemas también se utilizan variables artificiales para formar una base inicial.
+
+La holgura representa un recurso que no fue utilizado. El exceso representa cuánto se supera un mínimo establecido. Las variables artificiales solamente sirven para iniciar el procedimiento y deben desaparecer de la solución final.
+
+\section*{4. Método de la Gran M}
+El método de la Gran M se utiliza cuando el modelo necesita variables artificiales. Estas reciben una penalización grande M dentro de la función objetivo para hacer que salgan de la base durante las iteraciones.
+
+En el ejemplo de las notas se minimiza C = 6x1 + 8x2. Después de aplicar el procedimiento se obtiene x1 = 1500 y x2 = 3500, con un costo mínimo de 37000. Las variables artificiales terminan fuera de la base, por lo que la solución es factible para el problema original.
+
+\section*{5. Simplex de maximización}
+Las notas presentan un ejemplo de una empresa que fabrica dos productos. El objetivo es determinar cuánto producir de cada uno para obtener el mayor beneficio posible, respetando las horas de máquina, la materia prima disponible y un límite de mercado.
+
+La función objetivo es maximizar Z = 4x1 + 6x2. Al realizar las iteraciones se obtiene x1 = 1600/3, aproximadamente 533.33, y x2 = 1000/3, aproximadamente 333.33. El beneficio máximo es 12400/3, aproximadamente 4133.33.
+
+El ejemplo también muestra que no siempre es correcto redondear una solución continua cuando los productos deben fabricarse en unidades enteras; en ese caso se necesitaría un modelo de programación entera.
+
+\section*{6. Procedimiento general del Simplex}
+De forma general, primero se escribe el modelo y se convierten las restricciones a la forma necesaria. Después se construye la tabla inicial, se identifica la variable que entra, se calculan las razones para determinar la fila pivote, se normaliza esa fila y se hacen ceros en el resto de la columna. Finalmente se recalculan los valores de Zj y Cj - Zj.
+
+Con la convención utilizada en las notas, en problemas de maximización se buscan costos reducidos positivos y en minimización costos reducidos negativos. El proceso termina cuando ya no existen mejoras.
+
+\section*{7. Situaciones especiales}
+Durante el método simplex pueden aparecer situaciones especiales. Los óptimos múltiples ocurren cuando más de una solución alcanza el mismo valor óptimo. La degeneración puede aparecer cuando existen razones mínimas iguales. Un problema es no factible cuando sus restricciones no pueden cumplirse al mismo tiempo. La no acotación ocurre cuando el valor de una variable puede crecer indefinidamente sin violar las restricciones y, por lo tanto, no existe un óptimo finito.
+
+\section*{8. Conceptos importantes y comprobación}
+Una variable básica forma parte de la solución actual, mientras que una variable no básica se fija en cero. La columna pivote corresponde a la variable que entra a la base y la fila pivote se selecciona mediante la razón mínima. El precio sombra representa el cambio marginal en la función objetivo cuando se dispone de una unidad adicional de un recurso, mientras se mantenga la misma base.
+
+Antes de aceptar una solución se debe sustituir en las restricciones originales, verificar la no negatividad y las unidades, volver a calcular la función objetivo y explicar qué recursos sobran y cuáles se utilizan completamente.
+
+\section*{Conclusión}
+La investigación de operaciones permite transformar problemas reales en modelos matemáticos para encontrar mejores decisiones. Las matrices facilitan la organización de la información y el método simplex ayuda a resolver problemas de maximización y minimización.
+
+Lo más importante no es solamente obtener un resultado numérico, sino comprobar que cumpla las restricciones y entender qué significa dentro del problema original. De esta manera, el modelo matemático realmente puede servir como apoyo para tomar decisiones.
+
+\end{document}
